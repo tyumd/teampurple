@@ -54,3 +54,42 @@ def toll(self, name, license_number = None):
                     print(f"Hello {on_f_name}, you have a balance of {balance}")
                 else:
                     print("We have no record of your transactions")
+                    
+
+def read_file(filepath):
+    """ Opens and reads the file
+    """
+    data ={}
+    with open(filepath, "r", encoding= "utf-8") as infile:
+        for line in infile:
+            information = line.strip.split(",")
+            data[information[0]]=[information[1],
+                                information[2],
+                                information[3], int(information[4]), 
+                                information[5], int(information[6]),
+                                information[7], int(information[8])]
+    return data
+    
+
+def main(filepath, name, pay_amount =0, location= None):
+    """ Main function to recieve information, update information, make a payment, pass a toll
+    
+    Args:
+        filepath
+        name
+        pay_amount
+        location
+        
+    Side effects:
+        Reads the toll data from the file located at "filepath" using read_file
+        - If only filepath and name are provided will create instance of 
+        Member class and return name, license, vehicle type, toll information and balance
+        - If filepath name and pay_amount is provided, will create instance of 
+        Member class and Purplepass class
+        - 
+    """
+    data_dict = read_file(filepath)
+    #person_info = Member(data_dict, name)
+    #person_info.
+            
+    
