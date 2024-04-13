@@ -28,19 +28,17 @@ class Toll:
                         print("We have no record of your transactions")
                         
 
-    def read_file(filepath):
+    def read_file(self, filepath):
         """ Opens and reads the file
         """
-        data ={}
-        with open(filepath, "r", encoding= "utf-8") as infile:
+        data = []
+        with open(self.path, "r", encoding='utf-8') as infile:
             for line in infile:
-                information = line.strip.split(",")
-                data[information[0]]=[information[1],
-                                    information[2],
-                                    information[3], int(information[4]), 
-                                    information[5], int(information[6]),
-                                    information[7], int(information[8])]
-        return data
+                tollinfo = line.strip().split(",")
+                person = [info.strip() for info in tollinfo]
+                data.append(person)
+            self.data= data
+            return data
     
     def search(self, name):
         """ Searches for person's name in toll txt file.
