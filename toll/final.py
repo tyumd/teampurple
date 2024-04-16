@@ -1,11 +1,23 @@
-class Toll: 
+class Members: 
     def __init__(self, path, name, data): 
+        """judi is going to redo this to instatiate correctly
+        """
         self.path = path
         self.name = name
         self.data = data if data is not None else {}
 
         
     def toll(self, name, license_number = None):
+        """should be renamed get_balance
+            should calculate balance. 
+            toll price will be different depending on vehicle type--- options are:
+            GOV(x1.1), COMMERCIAL(x1.2), TRUCK(2), MOTORCYCLE(x1), SEDAN(1.5), SUV(1.7)
+            location options will be:
+            MD-->1.50, DC-->2.00, VA-->1.20, OTHER-->3.00
+            price will be location*vehicle type. ex: truck in dc is 4.00
+            print statements will be similar to what you have now feel free to adjust as you see best
+            
+        """
             file_path = "toll/people.txt"
             self.name = name
             self.license_number = license_number if license_number is not None \
@@ -27,18 +39,6 @@ class Toll:
                     else:
                         print("We have no record of your transactions")
                         
-
-    def read_file(self, filepath):
-        """ Opens and reads the file
-        """
-        data = []
-        with open(self.path, "r", encoding='utf-8') as infile:
-            for line in infile:
-                tollinfo = line.strip().split(",")
-                person = [info.strip() for info in tollinfo]
-                data.append(person)
-            self.data= data
-            return data
     
     def search(self, name):
         """ Searches for person's name in toll txt file.
@@ -46,6 +46,9 @@ class Toll:
         Args: Name (str): name of the person
         Returns: debtor (dictionary): All relevant information for the person's toll data. (plate, name, 
         times crossed, etc.) If the name isn't found, return None.
+        
+        should be renamed member and checks if person is member and then returns member info 
+        for example would return 
         
         """
         name = input("name: ")
@@ -62,6 +65,38 @@ class Toll:
                 
         print(f"{self.name} wasn't found in our record book.")
         return None
+    
+class Purplepass(Members):
+    """ Class will access the member object associated with the name provided.
+        Will allow users to use the toll and make payments to their bill.
+    """
+    def __init__():
+        """ overrides members init 
+        instansiates arguments passed in
+        """
+        
+    def usetoll():
+        """ if name does not exist in members add name and toll information to document 
+            if name does exist update information 
+        """
+        
+    def make_payment():
+        """ will allow person to make a payment and will update the file accordingly if person exists
+        """
+    
+def read_file(filepath):
+        """ Opens and reads the file
+        """
+        data ={}
+        with open(filepath, "r", encoding= "utf-8") as infile:
+            for line in infile:
+                information = line.strip.split(",")
+                data[information[0]]=[information[1],
+                                    information[2],
+                                    information[3], int(information[4]), 
+                                    information[5], int(information[6]),
+                                    information[7], int(information[8])]
+        return data
 
 def main(filepath, name, pay_amount =0, location= None):
     """ Main function to recieve information, update information, make a payment, pass a toll
@@ -83,10 +118,3 @@ def main(filepath, name, pay_amount =0, location= None):
     #data_dict = read_file(filepath)
     #person_info = Member(data_dict, name)
     #person_info.
-
-path = "people.txt"
-test = Toll(path, "", {})
-data = test.read_file(path)
-debtor = test.search("")
-if debtor:
-    print(debtor)

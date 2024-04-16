@@ -6,4 +6,6 @@ Ty, 987251, 5, 1,
 
 Name, license_plate, vehicle_type, toll_loc1, timescrossed1, toll_loc2, timescrossed2, toll_loc3, timescrossed3
 #ex:
-Judi, 123456, SUV, maryland, 2, dc, 1, pennsylvania, 0
+Judi lname, 123456, SUV, maryland, 2, dc, 1, virginia, 0
+Joe lname, 12893, GOV, maryland, 0, dc, 10, virginia, 2
+Ty lname, 45356, TRUCK, maryland, 5, dc, 2, virginia, 7
