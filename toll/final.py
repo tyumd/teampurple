@@ -1,3 +1,13 @@
+"""
+Class notes 4/26
+-add repr magic method to return a string with the toll info
+-next team meeting - split up all the functions to make sure each member has at least
+two methods
+-make the data file containing toll info
+-find a toll bill to model it after - 5 rows should be good
+
+"""
+
 class Members: 
     """
     """
