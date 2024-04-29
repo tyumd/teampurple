@@ -1,10 +1,15 @@
-Joe, 123456, 2, 3,
-Judi, 654321, 4, 2,
-Ty, 987251, 5, 1,
-
 #could also look like:
-
-Name, license_plate, vehicle_type, toll_loc1, timescrossed1, toll_loc2, timescrossed2, toll_loc3, timescrossed3
+-
+Name
+member(Y/N)
+license_plate
+vehicle_type(sedan, truck, motor_cycle, SUV, bus, tractor_trailer, gov)
+toll_loc(I95, BHT, FMT, CBB) baltimore harbor bridge, fort mchenry tunnel, chesapeake bay bridge
+I95_a
+BHT_a
+FMT_a
+CBB_a
+balance
 #ex:
 Judi lname, 123456, SUV, maryland, 2, dc, 1, virginia, 0
 Joe lname, 12893, GOV, maryland, 0, dc, 10, virginia, 2
