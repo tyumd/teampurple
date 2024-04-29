@@ -1,4 +1,6 @@
 class Members: 
+    """
+    """
     def __init__(self, path, name, data): 
         """judi is going to redo this to instatiate correctly
         """
@@ -97,6 +99,7 @@ def read_file(filepath):
                                     information[5], int(information[6]),
                                     information[7], int(information[8])]
         return data
+    
 
 def main(filepath, name, pay_amount =0, location= None):
     """ Main function to recieve information, update information, make a payment, pass a toll
@@ -115,6 +118,6 @@ def main(filepath, name, pay_amount =0, location= None):
         Member class and Purplepass class
         - 
     """
-    #data_dict = read_file(filepath)
-    #person_info = Member(data_dict, name)
-    #person_info.
+    data_dict = read_file(filepath)
+    person_info = Members(data_dict, name)
+    person_info.make_payment(pay_amount)
