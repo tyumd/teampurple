@@ -111,7 +111,7 @@ def read_file(filepath):
         return data
     
 
-def main(filepath, name, pay_amount =0, location= None):
+def main(filepath, name, pay_amount, location):
     """ Main function to recieve information, update information, make a payment, pass a toll
     
     Args:
@@ -130,4 +130,11 @@ def main(filepath, name, pay_amount =0, location= None):
     """
     data_dict = read_file(filepath)
     person_info = Members(data_dict, name)
-    person_info.make_payment(pay_amount)
+    if location is not None:
+        person_info.usetoll(location)
+    
+    if pay_amount is not None:
+        person_info.make_payment(pay_amount)
+        
+
+    
