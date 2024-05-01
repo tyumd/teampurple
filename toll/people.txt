@@ -4,13 +4,11 @@ Name
 member(Y/N)
 license_plate
 vehicle_type(sedan, truck, motor_cycle, SUV, bus, tractor_trailer, gov)
-toll_loc(I95, BHT, FMT, CBB) baltimore harbor bridge, fort mchenry tunnel, chesapeake bay bridge
 I95_a
 BHT_a
 FMT_a
 CBB_a
-balance
+
 #ex:
-Judi lname, 123456, SUV, maryland, 2, dc, 1, virginia, 0
-Joe lname, 12893, GOV, maryland, 0, dc, 10, virginia, 2
-Ty lname, 45356, TRUCK, maryland, 5, dc, 2, virginia, 7
+Judi lname, Y, 123456, SUV, BHT, 3, 2, 0, 0 
+
