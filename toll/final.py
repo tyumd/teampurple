@@ -19,37 +19,23 @@ class Members:
         self.data = data if data is not None else {}
 
         
-    def toll(self, name, license_number = None):
-        """should be renamed get_balance
-            should calculate balance. 
-            toll price will be different depending on vehicle type--- options are:
-            GOV(x1.1), COMMERCIAL(x1.2), TRUCK(2), MOTORCYCLE(x1), SEDAN(1.5), SUV(1.7)
-            location options will be:
-            MD-->1.50, DC-->2.00, VA-->1.20, OTHER-->3.00
-            price will be location*vehicle type. ex: truck in dc is 4.00
-            print statements will be similar to what you have now feel free to adjust as you see best
-            
-        """
-            file_path = "toll/people.txt"
-            self.name = name
-            self.license_number = license_number if license_number is not None \
-                                                                    else None
-            with open(file_path, "r", encoding="utf-8" ) as f:
+    with open(file_path, "r", encoding="utf-8" ) as f:
                 for line in f:
                     lines = line.strip().split(",")
                     on_f_name = lines[0].strip()
-                    on_f_license_number = lines[1].strip()
-                    toll_number = int(lines[2].strip())
-                    toll_amount = int(lines[3].strip())
-                    balance = toll_number*toll_amount
+                    member = lines[1].strip()
+                    license_plate = int(lines[2].strip())
+                    vehicle_type = int(lines[3].strip())
+                    I95_amount = int(lines[4].strip())
+                    BHT_amount = int(lines[5].strip())
+                    FMT_amount = int(lines[6].strip())
+                    CBB_amount = int(lines[7].strip())
+                    
 
                     if name == on_f_name:
-                        print(f"Hello {on_f_name}, you have a balance of {balance}")
-
-                    elif license_number == on_f_license_number:
-                        print(f"Hello {on_f_name}, you have a balance of {balance}")
-                    else:
-                        print("We have no record of your transactions")
+                        print(f"Hello {on_f_name}, you have passed through I95 {I95_amount} times, The Fort 
+                        McHenry Tunnel {FMT_amount} times, The Chesapeake Bay Bridge {CBB_amount} times 
+                        and ")
                         
     
     def search(self, name):
