@@ -7,6 +7,8 @@ two methods
 -find a toll bill to model it after - 5 rows should be good
 
 """
+import sys
+from argparse import ArgumentParser
 
 class Members: 
     """
@@ -38,7 +40,7 @@ class Members:
                         and ")
                         
     
-    def search(self, name):
+    def get_member(self, name):
         """ Searches for person's name in toll txt file.
 
         Args: Name (str): name of the person
@@ -49,20 +51,23 @@ class Members:
         for example would return 
         
         """
-        name = input("name: ")
-        self.name = name
-        for info in self.data:
-            if info[0] == name:
-                debtor = {
-                    "name": info[0],
-                    "plate": info[1],
-                    "axle": int(info[2]),
-                    "times_crossed": int(info[3])
-                }
-                return debtor
-                
-        print(f"{self.name} wasn't found in our record book.")
-        return None
+        debtor = {}
+        with open(self.path, "r", encoding="utf-8") as file:
+            for line in file:
+                info = line.strip().split(",")
+                if info[0].strip() == name:
+                    debtor = {
+                        "name": info[0].strip(),
+                        "member": info[1].strip(),
+                        "license_plate": info[2].strip(),
+                        "vehicle_type": info[3].strip(),
+                        "i95_a": info[4].strip(),
+                        "bht_a": info[5].strip(),
+                        "fmt_a": info[6].strip(),
+                        "cbb_a": info[7].strip(),
+                    }
+                    break
+        return debtor if debtor else None
     
 class Purplepass(Members):
     """ Class will access the member object associated with the name provided.
@@ -96,6 +101,14 @@ def read_file(filepath):
                                     information[7], int(information[8])]
         return data
     
+def parse_args(arglist):
+    
+    parser = ArgumentParser()
+    parser.add_argument('file', help="Path to file")
+    parser.add_argument('name', help="Name of specified bill debtor")
+    parser.add_argument('-l', '--location', help="Location of bridge")
+    parser.add_argument('-p', '--payment', type=float, help="Payment amount")
+    return parser.parse_args(arglist)
 
 def main(filepath, name, pay_amount =0, location= None):
     """ Main function to recieve information, update information, make a payment, pass a toll
@@ -117,3 +130,8 @@ def main(filepath, name, pay_amount =0, location= None):
     data_dict = read_file(filepath)
     person_info = Members(data_dict, name)
     person_info.make_payment(pay_amount)
+
+if __name__ == "__main__":
+    args = parse_args(sys.argv[:1])
+    main(args.file, args.name, args.location, args.payment)
+    
