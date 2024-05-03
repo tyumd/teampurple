@@ -52,23 +52,20 @@ class Members:
         
         """
         debtor = {}
-        with open(self.path, "r", encoding="utf-8") as file:
-            for line in file:
-                info = line.strip().split(",")
-                if info[0].strip() == name:
-                    debtor = {
-                        "name": info[0].strip(),
-                        "member": info[1].strip(),
-                        "license_plate": info[2].strip(),
-                        "vehicle_type": info[3].strip(),
-                        "i95_a": info[4].strip(),
-                        "bht_a": info[5].strip(),
-                        "fmt_a": info[6].strip(),
-                        "cbb_a": info[7].strip(),
+        for info in self.data.values():
+            if info[0].strip() == name:
+                debtor = {
+                    "name": info[0].strip(),
+                    "member": info[1].strip(),
+                    "license_plate": info[2].strip(),
+                    "vehicle_type": info[3].strip(),
+                    "i95_a": info[4].strip(),
+                    "bht_a": info[5].strip(),
+                    "fmt_a": info[6].strip(),
+                    "cbb_a": info[7].strip(),
                     }
-                    break
         return debtor if debtor else None
-    
+                
 class Purplepass(Members):
     """ Class will access the member object associated with the name provided.
         Will allow users to use the toll and make payments to their bill.
