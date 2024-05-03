@@ -12,5 +12,6 @@ CBB_a
 balance
 #ex:
 Judi lname, 123456, SUV, maryland, 2, dc, 1, virginia, 0
-Joe lname, 12893, GOV, maryland, 0, dc, 10, virginia, 2
-Ty lname, 45356, TRUCK, maryland, 5, dc, 2, virginia, 7
+Joe lname, 12893, GOV, maryland, 0, dc, 10, virginia, 2, no
+Ty lname, 45356, TRUCK, maryland, 5, dc, 2, virginia, 7, yes
+
