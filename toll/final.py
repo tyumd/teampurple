@@ -20,8 +20,14 @@ class Members:
         name = self.person_name
         
 
-        
-    with open(file_path, "r", encoding="utf-8" ) as f:
+    def toll(self,dict):  
+        """ 
+        arguments should be readjusted accordingly
+        should use name as key to find information of person
+        should assign names/ titles to correct indices
+        should return information and balance
+        """ 
+        with open(file_path, "r", encoding="utf-8" ) as f:
                 for line in f:
                     lines = line.strip().split(",")
                     on_f_name = lines[0].strip()
