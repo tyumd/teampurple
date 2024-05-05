@@ -81,11 +81,37 @@ class Purplepass(Members):
         instansiates arguments passed in
         """
         
-    def usetoll():
+    def usetoll(self,dict, name, license= None, location=None, vehicle_type = None ):
         """ 
-        judi if name does not exist in members add name and toll information to document 
+        judi 
+            will need to update locations accordingly
+            if name does not exist in members add name and toll information to document 
             if name does exist update information 
+            first need to figure out what index to overwrite
         """
+        i = 0
+        if location != None:
+            if location == "Bridge":
+                i = 3
+            if location == "HWY":
+                i =4
+            if location == "Otherloc":
+                i =5
+            if location == "lastloc":
+                i=6 
+        
+        if name in dict:
+            p_info= dict[name]
+            info_to_change= p_info[i]
+            info_to_change += 1
+            dict[name] = info_to_change
+        if name not in dict:
+            default_dict= ["N", license, vehicle_type,0, 0, 0, 0]
+            info_to_change= default_dict[1]
+            dict[name]= info_to_change
+        
+            
+        
         
     def make_payment():
         """ will allow person to make a payment and will update the file accordingly if person exists
