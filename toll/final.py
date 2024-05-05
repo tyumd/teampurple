@@ -20,7 +20,7 @@ class Members:
         name = self.person_name
         
 
-    def toll(self,dict):  
+    def get_balance(self,dict):  
         """ 
         arguments should be readjusted accordingly
         should use name as key to find information of person
