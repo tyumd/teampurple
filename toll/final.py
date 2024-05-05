@@ -13,12 +13,12 @@ from argparse import ArgumentParser
 class Members: 
     """
     """
-    def __init__(self, path, name, data): 
+    def __init__(self, dict, person_name): 
         """judi is going to redo this to instatiate correctly
         """
-        self.path = path
-        self.name = name
-        self.data = data if data is not None else {}
+        data = self.dict
+        name = self.person_name
+        
 
         
     with open(file_path, "r", encoding="utf-8" ) as f:
@@ -76,7 +76,8 @@ class Purplepass(Members):
         """
         
     def usetoll():
-        """ if name does not exist in members add name and toll information to document 
+        """ 
+        judi if name does not exist in members add name and toll information to document 
             if name does exist update information 
         """
         
@@ -85,7 +86,8 @@ class Purplepass(Members):
         """
     
 def read_file(filepath):
-        """ Opens and reads the file
+        """ judi 
+        Opens and reads the file
         """
         data ={}
         with open(filepath, "r", encoding= "utf-8") as infile:
@@ -94,8 +96,8 @@ def read_file(filepath):
                 data[information[0]]=[information[1],
                                     information[2],
                                     information[3], int(information[4]), 
-                                    information[5], int(information[6]),
-                                    information[7], int(information[8])]
+                                    int(information[5]), int(information[5]),
+                                    int(information[6]), int(information[7])]
         return data
     
 def parse_args(arglist):
