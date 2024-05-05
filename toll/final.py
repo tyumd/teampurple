@@ -141,7 +141,7 @@ def parse_args(arglist):
     parser.add_argument('-p', '--payment', type=float, help="Payment amount")
     return parser.parse_args(arglist)
 
-def main(filepath, name, pay_amount, location):
+def main(filepath, name, pay_amount, location, output_file):
     """ Main function to recieve information, update information, make a payment, pass a toll
     
     Args:
@@ -160,11 +160,15 @@ def main(filepath, name, pay_amount, location):
     """
     data_dict = read_file(filepath)
     person_info = Members(data_dict, name)
+        
     if location is not None:
         person_info.usetoll(location)
     
     if pay_amount is not None:
         person_info.make_payment(pay_amount)
+        
+    with open (output_file, "w", encoding = 'utf-8') as outfile:
+        outfile.write(f"")
         
 
     
