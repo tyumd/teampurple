@@ -44,14 +44,31 @@ class Member:
             elif member_info["member"].upper() == "N":
                 total_balance = (I95_a + BHT_a + FMT_a + CBB_a) * 1.5
             
-            print(f"Hello {member_info['name']},\nyou have passed through I95 {member_info['i95_a']} times,\n"
+            print(f"Hello {member_info['name']},\nYou have passed through I95 {member_info['i95_a']} times,\n"
                   f"The Fort McHenry Tunnel {member_info['fmt_a']} times,\n"
                   f"The Chesapeake Bay Bridge {member_info['cbb_a']} times,\n"
                   #decimal places and $
-                  f"and your total balance is ${total_balance:.2f}")
+                  f"And your total balance is ${total_balance:.2f}")
             
         else:
             print("Name not found in the records.")
+            
+    def make_payment(self, name):
+        #joe
+        name = input("what is your name?")
+        member_info = self.get_member(name)
+                payment_balance = self.get_balance.total_balance(member_info)
+                print(f"Hello {name}, your balance is {payment_balance}.")
+                
+                choice = input("Would you like to pay you balance?(Y/N)")
+                if choice == "Y":
+                    payment_amount = input("How much do you want to pay?")
+                    new_balance = payment_balance - payment_amount
+                    print(f"Your updated balance is {new_balance}")
+                else choice == "N":
+                    pass
+        return new_balance 
+        
 
 #fix reading syntax line.strip didnt have () 
 def read_file(filepath):
