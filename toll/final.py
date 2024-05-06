@@ -43,6 +43,7 @@ class Member:
                 total_balance = I95_a + BHT_a + FMT_a + CBB_a
             elif member_info["member"].upper() == "N":
                 total_balance = (I95_a + BHT_a + FMT_a + CBB_a) * 1.5
+            return total_balance
             
             print(f"Hello {member_info['name']},\nYou have passed through I95 {member_info['i95_a']} times,\n"
                   f"The Fort McHenry Tunnel {member_info['fmt_a']} times,\n"
@@ -52,7 +53,7 @@ class Member:
             
         else:
             print("Name not found in the records.")
-        return total_balance
+        
             
     def make_payment(self, name):
         #joe
