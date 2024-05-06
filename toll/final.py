@@ -53,6 +53,24 @@ class Member:
             
         else:
             print("Name not found in the records.")
+    
+    def balance_sheet(self):
+        new_sheet={}
+        for name, information in self.data:
+            new_sheet[name]= self.get_balance(name)
+        return new_sheet
+            
+    def update_sheet(self, name, newbalance):
+        updated_sheet={}
+        for n, b in self.balance_sheet.new_sheet:
+            if name ==n :
+                updated_sheet[n]= newbalance
+            else:
+                updated_sheet[n]= b
+        return updated_sheet
+      
+        
+    
     def make_payment(self, name):
         #joe
         payment_balance = self.get_balance(name)
