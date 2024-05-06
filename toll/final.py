@@ -58,7 +58,7 @@ class Member:
         #joe
         name = input("what is your name?")
         member_info = self.get_member(name)
-        payment_balance = get_balance(member_info)
+        payment_balance = self.get_balance(member_info)
         print(f"Hello {name}, your balance is {payment_balance}.")
         choice = input("Would you like to pay you balance?(Y/N)")
         if choice == "Y":
