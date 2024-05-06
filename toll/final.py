@@ -52,6 +52,29 @@ class Member:
             
         else:
             print("Name not found in the records.")
+            
+    """
+    def make_payment(name):
+        
+        name = input("what is your name?")
+        file_path = "people.txt"
+        with open(file_path, "r", encoding="utf-8" ) as f:
+                for line in f:
+                    lines = line.strip().split(",")
+                    on_f_name = lines[0].strip()
+                    if on_f_name == name:
+                        payment_balance = get_balance(name)
+                        print(f"Hello {name}, your balance is {payment_balance}.")
+                        choice = input("Would you like to pay you balance?(Y/N)")
+                        if choice == "Y":
+                            payment_amount = input("How much do you want to pay?")
+                            new_balance = payment_balance - payment_amount
+                            print(f"Your updated balance is {new_balance}")
+                        else choice == "N":
+                            pass
+        return new_balance 
+        """
+        
 
 #fix reading syntax line.strip didnt have () 
 def read_file(filepath):
