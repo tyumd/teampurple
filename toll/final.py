@@ -55,23 +55,16 @@ class Member:
             print("Name not found in the records.")
     def make_payment(self, name):
         #joe
-        name = input("what is your name? ")
+        print(f"Hello {name}, your balance is {payment_balance}.")
+        payment_amount = float(input("How much do you want to pay? "))
         member_info = self.get_member(name)
         if not member_info:
             print("record not found")
             return
         payment_balance = self.get_balance(name)
-        print(f"Hello {name}, your balance is {payment_balance}.")
-        choice = input("Would you like to pay you balance?(Y/N) ")
-        if choice.upper() == "Y":
-            while True:
-                try:payment_amount = float(input("How much do you want to pay? "))
-                    break
-                except ValueError
-            new_balance = payment_balance - payment_amount
-            print(f"Your updated balance is {new_balance}")
-        elif choice.upper() == "N":
-            print("no payment")
+        new_balance = payment_balance - payment_amount
+        print(f"Your updated balance is {new_balance}")
+
         return new_balance 
 
 #fix reading syntax line.strip didnt have () 
