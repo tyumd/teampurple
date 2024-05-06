@@ -53,7 +53,7 @@ class Member:
         else:
             print("Name not found in the records.")
             
-    def make_payment(name):
+    def make_payment(self, name):
         #joe
         name = input("what is your name?")
         member_info = self.get_member(name)
