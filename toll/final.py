@@ -64,6 +64,12 @@ def read_file(filepath):
             data[information[0]] = information
     return data
 
+def new_file(dict, output_file):
+    
+    with open (output_file, "w", encoding = 'utf-8') as outfile:
+        outfile.write(dict)
+    
+
 #graphs some info from txt file. PEOPLE TXT NOT THE NEW ONE
 def get_graph(filepath, choice):
     #Ty
@@ -102,7 +108,7 @@ def main(filepath):
     #judi
     data = read_file(filepath)
     newMem = Member(data)
-    option = input("What would you like to do?:\n1: Search a name\n2: Check average toll fees \n0: cancel\n")
+    option = input("What would you like to do?:\n1: Search a name\n2: Check average toll fees\n 0: cancel\n")
 
     if option == "1":
         name = input("What name do you want to look up?: ")
@@ -111,9 +117,15 @@ def main(filepath):
             balance = newMem.get_balance(name)
         else:
             print(f"{name} not found")
+        response= input("Would you like to make a payment? Y/N")    
+        if response == "Y":
+            charge= newMem.make_payment(name)
+            print(charge)
+        
     elif option == "2":
         choice = input("What do you want to graph?\n1: Members\n2: Vehicle Type\n3: Bridges\n")
         get_graph(filepath, choice)
+    
     elif option == "0":
         print("Terminating")
     else:
