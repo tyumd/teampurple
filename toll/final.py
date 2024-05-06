@@ -132,6 +132,7 @@ def main(filepath):
             balance = newMem.get_balance(name)
         else:
             print(f"{name} not found")
+        
         response= input("Would you like to make a payment? Y/N")    
         if response == "Y":
             charge= newMem.make_payment(name)
