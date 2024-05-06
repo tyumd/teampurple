@@ -44,11 +44,11 @@ class Member:
             elif member_info["member"].upper() == "N":
                 total_balance = (I95_a + BHT_a + FMT_a + CBB_a) * 1.5
             
-            print(f"Hello {member_info['name']},\nyou have passed through I95 {member_info['i95_a']} times,\n"
+            print(f"Hello {member_info['name']},\nYou have passed through I95 {member_info['i95_a']} times,\n"
                   f"The Fort McHenry Tunnel {member_info['fmt_a']} times,\n"
                   f"The Chesapeake Bay Bridge {member_info['cbb_a']} times,\n"
                   #decimal places and $
-                  f"and your total balance is ${total_balance:.2f}")
+                  f"And your total balance is ${total_balance:.2f}")
             
         else:
             print("Name not found in the records.")
