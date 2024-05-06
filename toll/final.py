@@ -55,13 +55,13 @@ class Member:
             print("Name not found in the records.")
     def make_payment(self, name):
         #joe
+        payment_balance = self.get_balance(name)
         print(f"Hello {name}, your balance is {payment_balance}.")
         payment_amount = float(input("How much do you want to pay? "))
         member_info = self.get_member(name)
         if not member_info:
             print("record not found")
-            return
-        payment_balance = self.get_balance(name)
+            pass
         new_balance = payment_balance - payment_amount
         print(f"Your updated balance is {new_balance}")
 
