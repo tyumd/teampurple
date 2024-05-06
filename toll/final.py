@@ -52,12 +52,13 @@ class Member:
             
         else:
             print("Name not found in the records.")
+        return total_balance
             
     def make_payment(self, name):
         #joe
         name = input("what is your name?")
         member_info = self.get_member(name)
-        payment_balance = self.get_balance.total_balance(member_info)
+        payment_balance = get_balance(member_info)
         print(f"Hello {name}, your balance is {payment_balance}.")
         choice = input("Would you like to pay you balance?(Y/N)")
         if choice == "Y":
