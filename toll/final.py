@@ -57,16 +57,15 @@ class Member:
         #joe
         name = input("what is your name?")
         member_info = self.get_member(name)
-                payment_balance = self.get_balance.total_balance(member_info)
-                print(f"Hello {name}, your balance is {payment_balance}.")
-                
-                choice = input("Would you like to pay you balance?(Y/N)")
-                if choice == "Y":
-                    payment_amount = input("How much do you want to pay?")
-                    new_balance = payment_balance - payment_amount
-                    print(f"Your updated balance is {new_balance}")
-                else choice == "N":
-                    pass
+        payment_balance = self.get_balance.total_balance(member_info)
+        print(f"Hello {name}, your balance is {payment_balance}.")
+        choice = input("Would you like to pay you balance?(Y/N)")
+        if choice == "Y":
+            payment_amount = input("How much do you want to pay?")
+            new_balance = payment_balance - payment_amount
+            print(f"Your updated balance is {new_balance}")
+        elif choice == "N":
+            pass
         return new_balance 
         
 
