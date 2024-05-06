@@ -69,7 +69,7 @@ class Member:
         print(f"Your updated balance is {new_balance}")
 
         
-        #self.update_sheet(name, new_balance)
+        self.update_sheet(name, new_balance)
 
         return new_balance 
 
