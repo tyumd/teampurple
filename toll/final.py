@@ -68,6 +68,9 @@ class Member:
             print("You over paid so we refunded the remaining amount to your bank account")
         print(f"Your updated balance is {new_balance}")
 
+        
+        #self.update_sheet(name, new_balance)
+
         return new_balance 
 
 #fix reading syntax line.strip didnt have () 
