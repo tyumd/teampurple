@@ -54,7 +54,7 @@ class Member:
             print("Name not found in the records.")
             
     def make_payment(name):
-        
+        #joe
         name = input("what is your name?")
         member_info = self.get_member(name)
                 payment_balance = self.get_balance.total_balance(member_info)
