@@ -20,13 +20,14 @@ class Members:
         name = self.person_name
         
 
-    def get_balance(self,dict):  
+    def get_balance(self,dict, name):  
         """ 
         arguments should be readjusted accordingly
         should use name as key to find information of person
         should assign names/ titles to correct indices
         should return information and balance
         """ 
+        file_path = "people.txt"
         with open(file_path, "r", encoding="utf-8" ) as f:
                 for line in f:
                     lines = line.strip().split(",")
@@ -38,12 +39,31 @@ class Members:
                     BHT_amount = int(lines[5].strip())
                     FMT_amount = int(lines[6].strip())
                     CBB_amount = int(lines[7].strip())
-                    
 
-                    if name == on_f_name:
+                    if on_f_name == name and member == "Y":
+                        I95_a = I95_amount * 5
+                        BHT_a = BHT_amount * 8
+                        FMT_a = FMT_amount * 3
+                        CBB_a = CBB_amount * 12
+                        balance = I95_a + BHT_a + FMT_a + CBB_a
+                        
                         print(f"Hello {on_f_name}, you have passed through I95 {I95_amount} times, The Fort 
                         McHenry Tunnel {FMT_amount} times, The Chesapeake Bay Bridge {CBB_amount} times 
-                        and ")
+                        and your total balance is {balance}")
+
+                    elif on_f_name == name and member == "N":
+                        I95_a = I95_amount * 5
+                        BHT_a = BHT_amount * 8
+                        FMT_a = FMT_amount * 3
+                        CBB_a = CBB_amount * 12
+                        balance = (I95_a + BHT_a + FMT_a + CBB_a) * 1.5
+                        
+                        print(f"Hello {on_f_name}, you have passed through I95 {I95_amount} times, The Fort 
+                        McHenry Tunnel {FMT_amount} times, The Chesapeake Bay Bridge {CBB_amount} times 
+                        and your total balance is {balance}")
+
+                    else:
+                        print("Name not on file")
                         
     
     def get_member(self, name):
