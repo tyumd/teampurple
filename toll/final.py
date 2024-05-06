@@ -63,6 +63,9 @@ class Member:
             print("record not found")
             pass
         new_balance = payment_balance - payment_amount
+        if new_balance < 0:
+            new_balance = 0
+            print("You over paid so we refunded the remaining amount to your bank account")
         print(f"Your updated balance is {new_balance}")
 
         return new_balance 
