@@ -10,9 +10,9 @@ class Member:
     #returns dictionary debtors for get_balance
     def get_member(self, name):
         #Ty
-        name = name.strip().lower()
+        
         for info in self.data.values():
-            if info[0].strip().lower() == name:
+            if info[0].strip() == name:
                 debtor = {
                     "name": info[0].strip(),
                     "member": info[1].strip(),
@@ -41,8 +41,10 @@ class Member:
             total_balance = 0
             if member_info["member"].upper() == "Y":
                 total_balance = I95_a + BHT_a + FMT_a + CBB_a
+                print(total_balance)
             elif member_info["member"].upper() == "N":
                 total_balance = (I95_a + BHT_a + FMT_a + CBB_a) * 1.5
+                return total_balance
             
             print(f"Hello {member_info['name']},\nYou have passed through I95 {member_info['i95_a']} times,\n"
                   f"The Fort McHenry Tunnel {member_info['fmt_a']} times,\n"
