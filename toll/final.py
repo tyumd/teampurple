@@ -2,6 +2,7 @@ import sys
 from argparse import ArgumentParser
 import pandas as pd
 import matplotlib.pyplot as plt
+import json
 
 class Member:
     def __init__(self, data):
@@ -56,17 +57,22 @@ class Member:
     
     def balance_sheet(self):
         new_sheet={}
-        for name, information in self.data:
+        for name, information in self.data.items():
             new_sheet[name]= self.get_balance(name)
         return new_sheet
             
-    def update_sheet(self, name, newbalance):
+    def update_sheet(self, name, newbalance, out_file):
         updated_sheet={}
-        for n, b in self.balance_sheet.new_sheet:
+        current_sheet=self.balance_sheet()
+        for n, b in current_sheet.items():
             if name ==n :
                 updated_sheet[n]= newbalance
             else:
                 updated_sheet[n]= b
+        
+        with open (out_file, "w", encoding = 'utf-8') as outfile:
+            json.dump(updated_sheet, outfile, indent=4, separators=(',', ': '))
+        
         return updated_sheet
       
         
@@ -83,11 +89,8 @@ class Member:
         new_balance = payment_balance - payment_amount
         if new_balance < 0:
             new_balance = 0
-            print("You over paid so we refunded the remaining amount to your bank account")
+            print("You overpaid so we refunded the remaining amount to your bank account")
         print(f"Your updated balance is {new_balance}")
-
-        
-        self.update_sheet(name, new_balance)
 
         return new_balance 
 
@@ -154,6 +157,16 @@ def main(filepath):
         if response == "Y":
             charge= newMem.make_payment(name)
             print(charge)
+            outfile= input("Where would you like the changes to be stored")
+            newMem.update_sheet(name, charge, outfile)
+            
+        elif response == "N":
+            pass
+        else:
+            print("Please respond 'Y' for Yes or 'N' for No")
+        
+        
+        
         
     elif option == "2":
         choice = input("What do you want to graph?\n1: Members\n2: Vehicle Type\n3: Bridges\n")
