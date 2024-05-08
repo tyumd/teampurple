@@ -31,7 +31,18 @@ class Member:
     #returns total balance for make_payment 
     #doesnt need a with open statement anymore
     def get_balance(self, name):
-        #joe
+        """
+        (joe)
+        
+        get_balance: takes the user's name as an argument and plugs the name into the get_member function
+        to calcualte the user's toll balance
+
+        Args:
+        name - string - name of the user/ person they would like to retrive a balance for
+
+        Returns:
+        total_balance - float - the calculated total balance of the user
+        """
         member_info = self.get_member(name)
         if member_info:
             I95_a = float(member_info["i95_a"]) * 5
