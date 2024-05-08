@@ -46,11 +46,7 @@ class Member:
             elif member_info["member"].upper() == "N":
                 total_balance = (I95_a + BHT_a + FMT_a + CBB_a) * 1.5
                 return total_balance
-            print(f"Hello {member_info['name']},\nyou have passed through I95 {member_info['i95_a']} times,\n"
-                  f"The Fort McHenry Tunnel {member_info['fmt_a']} times,\n"
-                  f"The Chesapeake Bay Bridge {member_info['cbb_a']} times,\n"
-                  #decimal places and $
-                  f"and your total balance is ${total_balance:.2f}")
+
             
         else:
             print("Name not found in the records.")
@@ -80,7 +76,7 @@ class Member:
     def make_payment(self, name):
         #joe
         payment_balance = self.get_balance(name)
-        print(f"Hello {name}, your balance is {payment_balance}.")
+        print(f"\nHello {name}, your balance is ${payment_balance:.2f}.")
         payment_amount = float(input("How much do you want to pay? "))
         member_info = self.get_member(name)
         if not member_info:
@@ -90,7 +86,7 @@ class Member:
         if new_balance < 0:
             new_balance = 0
             print("You overpaid so we refunded the remaining amount to your bank account")
-        print(f"Your updated balance is {new_balance}")
+        print(f"Your updated balance is {new_balance}\n")
 
         return new_balance 
 
@@ -108,77 +104,96 @@ def read_file(filepath):
 #graphs some info from txt file. PEOPLE TXT NOT THE NEW ONE
 def get_graph(filepath, choice):
     #Ty
-    #not finished 
-    df = pd.read_csv(filepath)
+    df = pd.read_csv(filepath, header=None, names=["name", "member", "license_plate", "vehicle_type", "i95_a", "bht_a", "fmt_a", "cbb_a"])
     if choice == "1":
+        bridge_crossings = df.iloc[:, -4:]
+        df["total_crossings"] = bridge_crossings.sum(axis=1)
+        average_crossings_by_vehicle = df.groupby("vehicle_type")["total_crossings"].mean()
+
+        print(average_crossings_by_vehicle)
+
+        average_crossings_by_vehicle.plot(kind="bar", color="blue")
+        plt.title("Average Bridge Crossings by Vehicle Type")
+        plt.xlabel("Vehicle Type")
+        plt.ylabel("Average Number of Bridge Crossings")
+        plt.xticks(rotation=45)
+        plt.grid(axis="y")
+        plt.tight_layout()
+        plt.show()
+
+    elif choice =="2":
+
+        key = df.iloc[:, 3]
+        keyCount = key.value_counts()
+        print(keyCount)
+        keyCount.plot(kind='bar', color='green')
+        plt.title('Types of Vehicles')
+        plt.xlabel('Vehicles')
+        plt.ylabel('Number of Vehicles')
+        plt.xticks(rotation=45)
+        plt.show()
+
+    elif choice == "3":
         key = df.iloc[:, 1]
         keyCount = key.value_counts()
+        print(keyCount)
         keyCount.plot(kind='bar', color=['blue', 'red'])
         plt.title('Purple Pass Members')
         plt.xlabel('Membership Status')
         plt.ylabel('Membership Count')
         plt.xticks(rotation=0)
         plt.show()
-    elif choice =="2":
-        key = df.iloc[:, 3]
-        key = key.value_counts()
-    elif choice == "3":
-        key = df.iloc[4:7]
-        key = key.value_counts()
-    
-
-    if key not in df.columns:
-        print(f"{key} doesn't exist")
-        return
+    else:
+        print(f"Invalid choice {choice}")
 
 #can make more arguments like a new txt file for writing.
 def parse_args(arglist):
     #Ty
     parser = ArgumentParser()
     parser.add_argument('file', help="Path to file")
+    parser.add_argument('outfile', help="path to balance sheet")
     return parser.parse_args(arglist)
 
 #biggest change. we talked about using input statements and it just makes the entire program easier imo
-def main(filepath):
+def main(filepath, outfile):
     #judi
     data = read_file(filepath)
     newMem = Member(data)
-    option = input("What would you like to do?:\n1: Search a name\n2: Check average toll fees\n 0: cancel\n")
+    while True:
+        option = input("What would you like to do?:\n1: Search a name\n2: Graphs\n0: cancel\n")
 
-    if option == "1":
-        name = input("What name do you want to look up?: ")
-        member = newMem.get_member(name)
-        if member:
-            balance = newMem.get_balance(name)
-        else:
-            print(f"{name} not found")
-        
-        response= input("Would you like to make a payment? Y/N")    
-        if response == "Y":
-            charge= newMem.make_payment(name)
-            print(charge)
-            outfile= input("Where would you like the changes to be stored")
-            newMem.update_sheet(name, charge, outfile)
+        if option == "1":
+            name = input("What name do you want to look up?: ")
+            member = newMem.get_member(name)
+            if member:
+                newMem.get_balance(name)
+            else:
+                print(f"{name} not found")
             
-        elif response == "N":
-            pass
+            response= input("Would you like to make a payment? Y/N: ")    
+            if response == "Y":
+                charge= newMem.make_payment(name)
+                newMem.update_sheet(name, charge, outfile)
+                
+            elif response == "N":
+                pass
+            else:
+                print("Please respond 'Y' for Yes or 'N' for No")
+            
+            
+            
+            
+        elif option == "2":
+            choice = input("What do you want to graph?\n1: Crosses by Vehicle\n2: Vehicle Type\n3: Members")
+            get_graph(filepath, choice)
+        
+        elif option == "0":
+            print("Terminating")
+            break
         else:
-            print("Please respond 'Y' for Yes or 'N' for No")
-        
-        
-        
-        
-    elif option == "2":
-        choice = input("What do you want to graph?\n1: Members\n2: Vehicle Type\n3: Bridges\n")
-        get_graph(filepath, choice)
-    
-    elif option == "0":
-        print("Terminating")
-    else:
-        print("Invalid option")
+            print("Invalid option")
 
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    main(args.file)
-
+    main(args.file, args.outfile)
