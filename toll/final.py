@@ -35,9 +35,7 @@ class Member:
                 return debtor
         return None
     
-    #fix calculation 
     #returns total balance for make_payment 
-    #doesnt need a with open statement anymore
     def get_balance(self, name):
         """
         (joe)
@@ -122,7 +120,7 @@ class Member:
 
         return new_balance 
 
-#fix reading syntax line.strip didnt have () 
+
 def read_file(filepath):
     #judi
     """ Opens and reads the file """
@@ -133,7 +131,7 @@ def read_file(filepath):
             data[information[0]] = information
     return data
 
-#graphs some info from txt file. PEOPLE TXT NOT THE NEW ONE
+
 def get_graph(filepath, choice):
     """
     (Ty Hood)
@@ -150,7 +148,7 @@ def get_graph(filepath, choice):
     df = pd.read_csv(filepath, header=None, names=["name", "member", "license_plate", "vehicle_type", "i95_a", "bht_a", "fmt_a", "cbb_a"])
     
     if choice == "1":
-        
+        #average crossings per vehicle type
         bridge_crossings = df.iloc[:, -4:]
         df["total_crossings"] = bridge_crossings.sum(axis=1)
         average_crossings_by_vehicle = df.groupby("vehicle_type")["total_crossings"].mean()
@@ -167,7 +165,7 @@ def get_graph(filepath, choice):
         plt.show()
 
     elif choice =="2":
-
+        #number of different vehicles
         key = df.iloc[:, 3]
         keyCount = key.value_counts()
         
@@ -181,6 +179,7 @@ def get_graph(filepath, choice):
         plt.show()
 
     elif choice == "3":
+        #Number of Purple Pass members vs Non
         key = df.iloc[:, 1]
         keyCount = key.value_counts()
         
@@ -208,7 +207,6 @@ def parse_args(arglist):
     parser.add_argument('outfile', help="path to balance sheet")
     return parser.parse_args(arglist)
 
-#biggest change. we talked about using input statements and it just makes the entire program easier imo
 def main(filepath, outfile):
     #judi
     data = read_file(filepath)
