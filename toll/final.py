@@ -38,7 +38,7 @@ class Member:
         to calcualte the user's toll balance
 
         Args:
-        name - string - name of the user/ person they would like to retrive a balance for
+        name - string - name of the account holder
 
         Returns:
         total_balance - float - the calculated total balance of the user
@@ -85,7 +85,20 @@ class Member:
         
     
     def make_payment(self, name):
-        #joe
+        """
+        (joe)
+
+        make_payment: takes a name as input and uses the get_balance function to calculate the 
+        total balance. The user then has an option to pay the whole balance or only part. After
+        a payment has been recived the balance is updated
+
+        Args:
+        name - string - name of the account holder
+
+        Returns:
+        new_balance - float - the updated balance of the account holder
+        """
+       
         payment_balance = self.get_balance(name)
         print(f"\nHello {name}, your balance is ${payment_balance:.2f}.")
         payment_amount = float(input("How much do you want to pay? "))
