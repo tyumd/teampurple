@@ -10,7 +10,15 @@ class Member:
     
     #returns dictionary debtors for get_balance
     def get_member(self, name):
-        #Ty
+        """ (Ty Hood)
+        Retrieves the specific member information given the proper name.
+
+        Parameters:
+            name(string): Name of member to search
+        Returns: 
+            Dict or None: Dictionary that contains member information. If nothing is found, return None.
+            
+        """
         
         for info in self.data.values():
             if info[0].strip() == name:
@@ -127,15 +135,28 @@ def read_file(filepath):
 
 #graphs some info from txt file. PEOPLE TXT NOT THE NEW ONE
 def get_graph(filepath, choice):
-    #Ty
+    """
+    (Ty Hood)
+    Creates three different graphs displaying data. 
+
+    Parameters:
+        filepath(string): Path to file that holds data (people.txt)
+        choice(str): String that determines which graph is shown.
+        1 - Average bridge crosses by specific vehicle 
+        2 - Different types of vehicles
+        3 - Amount of people who have the Purple Pass
+    
+    """
     df = pd.read_csv(filepath, header=None, names=["name", "member", "license_plate", "vehicle_type", "i95_a", "bht_a", "fmt_a", "cbb_a"])
+    
     if choice == "1":
+        
         bridge_crossings = df.iloc[:, -4:]
         df["total_crossings"] = bridge_crossings.sum(axis=1)
         average_crossings_by_vehicle = df.groupby("vehicle_type")["total_crossings"].mean()
-
+        
         print(average_crossings_by_vehicle)
-
+        
         average_crossings_by_vehicle.plot(kind="bar", color="blue")
         plt.title("Average Bridge Crossings by Vehicle Type")
         plt.xlabel("Vehicle Type")
@@ -149,7 +170,9 @@ def get_graph(filepath, choice):
 
         key = df.iloc[:, 3]
         keyCount = key.value_counts()
+        
         print(keyCount)
+        
         keyCount.plot(kind='bar', color='green')
         plt.title('Types of Vehicles')
         plt.xlabel('Vehicles')
@@ -160,7 +183,9 @@ def get_graph(filepath, choice):
     elif choice == "3":
         key = df.iloc[:, 1]
         keyCount = key.value_counts()
+        
         print(keyCount)
+        
         keyCount.plot(kind='bar', color=['blue', 'red'])
         plt.title('Purple Pass Members')
         plt.xlabel('Membership Status')
@@ -172,7 +197,12 @@ def get_graph(filepath, choice):
 
 #can make more arguments like a new txt file for writing.
 def parse_args(arglist):
-    #Ty
+    """ (Ty Hood)
+    Parses the command line arguments
+    
+    Parameters: 
+        argparse: Object holding the parsed arguments
+    """
     parser = ArgumentParser()
     parser.add_argument('file', help="Path to file")
     parser.add_argument('outfile', help="path to balance sheet")
