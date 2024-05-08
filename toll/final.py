@@ -69,12 +69,37 @@ class Member:
             print("Name not found in the records.")
     
     def balance_sheet(self):
+        """
+        Generates or retrieves the balance sheet which is a dictionary mapping
+        customer names to their balance.
+        
+        Returns:
+                new_sheet (dict): A dictionary with customer names as keys and their 
+                                    corresponding balances.
+
+
+        """
         new_sheet={}
         for name, information in self.data.items():
             new_sheet[name]= self.get_balance(name)
         return new_sheet
             
     def update_sheet(self, name, newbalance, out_file):
+        """
+        Updates the balance sheet with a new balance for a specific customer
+        and writes the updated balances to a JSON file.
+        
+        Parameters:
+                    name(str): The name of the customer who's balance needs to be updated.
+                    newbalance(float): The customer's new balance after payment to update.
+                    out_file(str): The filepath where the updated sheet will be saved.
+        Returns:
+                    updated_sheet(dict): returns the updated balance sheet.
+        Side Effects:
+                    - Modifies the balance sheet by updating it with the new balance.
+                    - Writes the updated balance sheet to a file, altering the file's contents.
+                    
+        """
         updated_sheet={}
         current_sheet=self.balance_sheet()
         for n, b in current_sheet.items():
@@ -123,7 +148,17 @@ class Member:
 
 def read_file(filepath):
     #judi
-    """ Opens and reads the file """
+    """ Opens and reads a CSV file that contains the data of the people that have used the toll.
+        Each line in the file represents a member's information and is split into components to
+        be stored in a dictionary.
+        
+        Parameters:
+            filepath (str): The path to the file thta contains member data.
+            
+        Returns:
+        data (dict): A dictionary where each key is a customer's name, and the value is a list
+                containing that customer's information.
+    """
     data = {}
     with open(filepath, "r", encoding="utf-8") as infile:
         for line in infile:
@@ -208,6 +243,19 @@ def parse_args(arglist):
     return parser.parse_args(arglist)
 
 def main(filepath, outfile):
+    """
+    The main function to handle the program's flow. It initiates the program, processes
+    user input, and interacts with other functions to search for member information, 
+    update balances, generate graphs, and manage the data file based on user choices.
+    
+    Parameters:
+                filepath (str): The path to the file containing consumer data.
+                outfile (str): The path to the output file where balance updates are stored.
+    Side Effects:
+                - Reads from and writes to files given by the user.
+                -
+                - 
+    """
     #judi
     data = read_file(filepath)
     newMem = Member(data)
