@@ -116,7 +116,7 @@ class Member:
         if new_balance < 0:
             new_balance = 0
             print("You overpaid so we refunded the remaining amount to your bank account")
-        print(f"Your updated balance is {new_balance}\n")
+        print(f"Your updated balance is ${new_balance:.2f}.\n")
 
         return new_balance 
 
@@ -236,7 +236,7 @@ def main(filepath, outfile):
             
             
         elif option == "2":
-            choice = input("What do you want to graph?\n1: Crosses by Vehicle\n2: Vehicle Type\n3: Members")
+            choice = input("What do you want to graph?\n1: Crosses by Vehicle\n2: Vehicle Type\n3: Members\n")
             get_graph(filepath, choice)
         
         elif option == "0":
