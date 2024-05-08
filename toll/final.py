@@ -69,6 +69,7 @@ class Member:
             print("Name not found in the records.")
     
     def balance_sheet(self):
+        # Judi comprehensions
         """
         Generates or retrieves the balance sheet which is a dictionary mapping
         customer names to their balance.
@@ -85,6 +86,7 @@ class Member:
         return new_sheet
             
     def update_sheet(self, name, newbalance, out_file):
+        # Judi json.dump()
         """
         Updates the balance sheet with a new balance for a specific customer
         and writes the updated balances to a JSON file.
@@ -147,7 +149,7 @@ class Member:
 
 
 def read_file(filepath):
-    #judi
+    #Judi with statements, sequence unpacking
     """ Opens and reads a CSV file that contains the data of the people that have used the toll.
         Each line in the file represents a member's information and is split into components to
         be stored in a dictionary.
@@ -243,6 +245,7 @@ def parse_args(arglist):
     return parser.parse_args(arglist)
 
 def main(filepath, outfile):
+    # Judi f-strings containing expressions
     """
     The main function to handle the program's flow. It initiates the program, processes
     user input, and interacts with other functions to search for member information, 
@@ -256,7 +259,6 @@ def main(filepath, outfile):
                 -
                 - 
     """
-    #judi
     data = read_file(filepath)
     newMem = Member(data)
     while True:
