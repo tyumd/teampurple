@@ -6,17 +6,17 @@ Explanation of the Purpose of Each File in the Repository:
 
 3) balance_sheet.json: A JSON file used to store and retrieve the lastest balance information for each customer. It is updated whenever payments are made or when balances are recalculated.
 
-|Method/ Function   ||Name | 
+|Method/ Function   ||Author ||Technique|
 __________________________________________________________________
-|                   ||Joe  | 
-|                   ||Joe  |
-|                   ||Judi |
-|                   ||Judi |
-|                   ||Judi |
-|                   ||Ty   |
-|                   ||Ty   |
-|                   ||Ty   |
-|                   ||Ty   |
+|get_balance        ||Joe    |
+|make_payment       ||Joe    |
+|balance_sheet      ||Judi   |comprehensions
+|update_sheet       ||Judi   |json.dump()
+|read_file          ||Judi   |with statements, sequence unpacking
+|main               ||Judi   |f-strings, containing expressions
+|get_member         ||Ty     |
+|get_graph          ||Ty     |Pandas
+|parse_args         ||Ty     |
 
 Instructions for running the PurplePass program from the terminal:
 
