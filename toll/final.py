@@ -135,6 +135,7 @@ class Member:
         payment_balance = self.get_balance(name)
         print(f"\nHello {name}, your balance is ${payment_balance:.2f}.")
         payment_amount = float(input("How much do you want to pay? "))
+        payment_amount = payment_amount if payment_amount>= 0 else 0
         member_info = self.get_member(name)
         if not member_info:
             print("record not found")
