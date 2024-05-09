@@ -13,7 +13,7 @@ ___________________________________________________________________
 |balance_sheet      ||Judi   |comprehensions                       |
 |update_sheet       ||Judi   |json.dump()                          |
 |read_file          ||Judi   |with statements, sequence unpacking  |
-|main               ||Judi   |containing expressions               |
+|main               ||Judi   |none               |
 |get_member         ||Ty     |none                                 |
 |get_graph          ||Ty     |Pandas                               |
 |parse_args         ||Ty     |argparse                             |
