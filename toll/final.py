@@ -150,7 +150,7 @@ class Member:
 
 def read_file(filepath):
     #Judi with statements, sequence unpacking
-    """ Opens and reads a CSV file that contains the data of the people that have used the toll.
+    """ Opens and reads a file that contains the data of the people that have used the toll.
         Each line in the file represents a member's information and is split into components to
         be stored in a dictionary.
         
